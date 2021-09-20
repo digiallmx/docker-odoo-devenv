@@ -1,7 +1,12 @@
 version: "3.1"
 services:
   web:
-    image: junari/odoo:14.0
+    build:
+      context: ./junari-odoo-docker
+      args:
+        - ODOO_VERSION=14.0
+        - ODOO_REVISION=HEAD
+    command: tail -F anything
     depends_on:
       - db
     ports:

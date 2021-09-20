@@ -1,0 +1,3 @@
+[submodule "junari-odoo-docker"]
+	path = junari-odoo-docker
+	url = git@github.com:digiallmx/junari-odoo-docker.git
