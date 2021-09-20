@@ -1,0 +1,32 @@
+version: "3.1"
+services:
+  web:
+    image: junari/odoo:14.0
+    depends_on:
+      - db
+    ports:
+      - 8069:8069
+    volumes:
+      - dev-odoo-web-data:/opt/odoo/data
+      - ./vscode:/opt/odoo/.vscode
+      - ./addons:/opt/odoo/custom_addons
+      - dev-odoo-web-home:/home/odoo
+      - ./odoo-conf/odoo.conf:/etc/odoo/odoo.conf
+    environment:
+      - DB_HOST=db
+      - DB_USER=odoo
+      - DB_PASSWORD=odoo
+      - DB_PORT=5432
+  db:
+    image: postgres:13
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - dev-odoo-db-data:/var/lib/postgresql/data/pgdata
+volumes:
+  dev-odoo-web-data:
+  dev-odoo-web-home:
+  dev-odoo-db-data:
