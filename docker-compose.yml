@@ -8,8 +8,8 @@ services:
       - 8069:8069
     volumes:
       - dev-odoo-web-data:/opt/odoo/data
-      - ./vscode:/opt/odoo/.vscode
-      - ./addons:/opt/odoo/custom_addons
+      - dev-odoo-vscode:/opt/odoo/.vscode
+      - dev-odoo-custom_addons:/opt/odoo/custom_addons
       - dev-odoo-web-home:/home/odoo
       - ./odoo-conf/odoo.conf:/etc/odoo/odoo.conf
     environment:
@@ -28,5 +28,7 @@ services:
       - dev-odoo-db-data:/var/lib/postgresql/data/pgdata
 volumes:
   dev-odoo-web-data:
+  dev-odoo-vscode:
+  dev-odoo-custom_addons:
   dev-odoo-web-home:
   dev-odoo-db-data:
